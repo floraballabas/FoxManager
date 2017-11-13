@@ -7,7 +7,7 @@ namespace FoxManager.Models
 {
     public class Division
     {
-        public int ClassId { get; set; }
+        public int DivisionId { get; set; }
         public string ClassName { get; set; }
         public string Technology { get; set; }
 

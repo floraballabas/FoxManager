@@ -7,7 +7,7 @@ namespace FoxManager.Models
 {
     public class Project
     {
-        public int TaskId { get; set; }
+        public int ProjectId { get; set; }
         public string DescriptionOfTask { get; set; }
         public int DueDate { get; set; }
         public int PriorityLevel { get; set; }
