@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace FoxManager.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class time : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -70,9 +70,9 @@ namespace FoxManager.Migrations
                     ProjectId = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     DescriptionOfTask = table.Column<string>(nullable: true),
-                    DueDate = table.Column<int>(nullable: false),
+                    DueDate = table.Column<DateTime>(nullable: false),
                     PriorityLevel = table.Column<int>(nullable: false),
-                    StudentId = table.Column<int>(nullable: true)
+                    StudentId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -82,7 +82,7 @@ namespace FoxManager.Migrations
                         column: x => x.StudentId,
                         principalTable: "Students",
                         principalColumn: "StudentId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

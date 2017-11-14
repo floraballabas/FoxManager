@@ -29,11 +29,10 @@ namespace FoxManager
             Configuration = builder.Build();
 
             services.AddMvc();
-            services.AddScoped<UserRepository>();
-            services.AddScoped<UserService>();
+            services.AddScoped<StudentRepository>();
+            services.AddScoped<StudentService>();
             services.AddDbContext<FoxManagerContext>(options => options.UseNpgsql(Configuration["ConnectionStrings:FoxManagerConnection"]));
         }
-
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
@@ -43,12 +42,6 @@ namespace FoxManager
             }
 
             app.UseMvc();
-
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync("Hello World!");
-            });
-
         }
     }
 }

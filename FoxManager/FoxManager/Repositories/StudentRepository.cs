@@ -7,27 +7,27 @@ using FoxManager.Models;
 
 namespace FoxManager.Repositories
 {
-    public class UserRepository
+    public class StudentRepository
     {
         FoxManagerContext FoxManagerContext;
 
-        public UserRepository(FoxManagerContext foxManagerContext)
+        public StudentRepository(FoxManagerContext foxManagerContext)
         {
             FoxManagerContext = foxManagerContext;
         }
 
-        public bool CheckUserExist(string name)
+        public bool CheckStudentExist(string name)
         {
             var user = FoxManagerContext.Students.FirstOrDefault(x => x.StudentName.Equals(name));
             return user != null ? true : false;
         }
 
-        public Student GetUserInfo(string name)
+        public Student GetStudentInfo(string name)
         {
             return FoxManagerContext.Students.FirstOrDefault(y => y.StudentName.Equals(name));
         }
 
-        public List<Project> GetUserProjectList(string name)
+        public List<Project> GetStudentProjectList(string name)
         {
             return FoxManagerContext.Projects.Where(p => p.Student.StudentName.Equals(name))
                 .ToList();

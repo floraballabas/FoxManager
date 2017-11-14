@@ -8,8 +8,8 @@ using FoxManager.Entities;
 namespace FoxManager.Migrations
 {
     [DbContext(typeof(FoxManagerContext))]
-    [Migration("20171113151043_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20171114144124_time")]
+    partial class time
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -38,11 +38,12 @@ namespace FoxManager.Migrations
 
                     b.Property<string>("DescriptionOfTask");
 
-                    b.Property<int>("DueDate");
+                    b.Property<DateTime>("DueDate");
 
                     b.Property<int>("PriorityLevel");
 
-                    b.Property<int?>("StudentId");
+                    b.Property<int?>("StudentId")
+                        .IsRequired();
 
                     b.HasKey("ProjectId");
 
@@ -87,12 +88,13 @@ namespace FoxManager.Migrations
                 {
                     b.HasOne("FoxManager.Models.Student", "Student")
                         .WithMany("Projects")
-                        .HasForeignKey("StudentId");
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("FoxManager.Models.Student", b =>
                 {
-                    b.HasOne("FoxManager.Models.Team")
+                    b.HasOne("FoxManager.Models.Team", "Team")
                         .WithMany("Students")
                         .HasForeignKey("TeamId");
                 });

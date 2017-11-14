@@ -37,11 +37,12 @@ namespace FoxManager.Migrations
 
                     b.Property<string>("DescriptionOfTask");
 
-                    b.Property<int>("DueDate");
+                    b.Property<DateTime>("DueDate");
 
                     b.Property<int>("PriorityLevel");
 
-                    b.Property<int?>("StudentId");
+                    b.Property<int?>("StudentId")
+                        .IsRequired();
 
                     b.HasKey("ProjectId");
 
@@ -86,12 +87,13 @@ namespace FoxManager.Migrations
                 {
                     b.HasOne("FoxManager.Models.Student", "Student")
                         .WithMany("Projects")
-                        .HasForeignKey("StudentId");
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("FoxManager.Models.Student", b =>
                 {
-                    b.HasOne("FoxManager.Models.Team")
+                    b.HasOne("FoxManager.Models.Team", "Team")
                         .WithMany("Students")
                         .HasForeignKey("TeamId");
                 });
