@@ -9,6 +9,7 @@ namespace FoxManager.Models
     {
         public int TeamId { get; set; }
         public string TeamName { get; set; }
+        public Division Division { get; set; }
 
         public ICollection<Student> Students { get; set; }
     }

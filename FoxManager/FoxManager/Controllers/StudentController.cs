@@ -11,17 +11,17 @@ namespace FoxManager.Controllers
     [Route("/student")]
     public class StudentController : Controller
     {
-        private StudentService UserService;
+        private StudentService StudentService;
 
-        public StudentController(StudentService userService)
+        public StudentController(StudentService studentService)
         {
-            UserService = userService;
+            StudentService = studentService;
         }
 
         [HttpPost]
         public IActionResult LoginHandler(Student studentFromForm)
         {
-            if (UserService.AuthenticateStudent(studentFromForm.StudentName))
+            if (StudentService.AuthenticateStudent(studentFromForm.StudentName))
             {
                 return LocalRedirect("/student/" + studentFromForm.StudentName);
             }
@@ -31,11 +31,11 @@ namespace FoxManager.Controllers
 
         [HttpGet]
         [Route("/student/{studentName}")]
-        public IActionResult Profile(string studentName)
+        public IActionResult Student(string studentName)
         {
-            var user = UserService.GetStudentInfo(studentName);
-            var projects = UserService.GetStudentProjects(studentName);
-            return View(user);
+            var student = StudentService.GetStudentInfo(studentName);
+            var projects = StudentService.GetStudentProjects(studentName);
+            return View(student);
         }
     }
 }

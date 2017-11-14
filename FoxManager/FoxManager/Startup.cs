@@ -31,6 +31,8 @@ namespace FoxManager
             services.AddMvc();
             services.AddScoped<StudentRepository>();
             services.AddScoped<StudentService>();
+            services.AddScoped<TeamRepository>();
+            services.AddScoped<TeamService>();
             services.AddDbContext<FoxManagerContext>(options => options.UseNpgsql(Configuration["ConnectionStrings:FoxManagerConnection"]));
         }
 

@@ -28,6 +28,19 @@ namespace FoxManager.Entities
             modelBuilder.Entity<Project>()
                 .HasOne(u => u.Student)
                 .WithMany(p => p.Projects).IsRequired();
+
+            modelBuilder.Entity<Division>()
+               .HasMany(p => p.Teams)
+               .WithOne(u => u.Division).IsRequired();
+
+            modelBuilder.Entity<Team>()
+                .HasOne(u => u.Division)
+                .WithMany(p => p.Teams).IsRequired();
         }
+
+ 
+            
+
+
     }
 }

@@ -8,9 +8,10 @@ using FoxManager.Entities;
 namespace FoxManager.Migrations
 {
     [DbContext(typeof(FoxManagerContext))]
-    partial class FoxManagerContextModelSnapshot : ModelSnapshot
+    [Migration("20171114154855_team")]
+    partial class team
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn)

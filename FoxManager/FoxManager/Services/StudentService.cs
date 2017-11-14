@@ -11,9 +11,9 @@ namespace FoxManager.Services
     {
         private StudentRepository StudentRepository;
 
-        public StudentService(StudentRepository userRepository)
+        public StudentService(StudentRepository studentRepository)
         {
-            StudentRepository = userRepository;
+            StudentRepository = studentRepository;
         }
 
         public bool AuthenticateStudent(string name)
