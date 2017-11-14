@@ -9,7 +9,7 @@ namespace FoxManager.Models
     {
         public int ProjectId { get; set; }
         public string DescriptionOfTask { get; set; }
-        public int DueDate { get; set; }
+        public DateTime DueDate { get; set; }
         public int PriorityLevel { get; set; }
 
         public Student Student { get; set; }
