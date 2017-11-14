@@ -26,5 +26,11 @@ namespace FoxManager.Repositories
         {
             return FoxManagerContext.Students.FirstOrDefault(y => y.StudentName.Equals(name));
         }
+
+        public List<Project> GetUserProjectList(string name)
+        {
+            return FoxManagerContext.Projects.Where(p => p.Student.StudentName.Equals(name))
+                .ToList();
+        }
     }
 }

@@ -10,6 +10,7 @@ namespace FoxManager.Models
         public int StudentId { get; set; }
         public string StudentName { get; set; }
 
+
         public ICollection<Project> Projects { get; set; }
     }
 }

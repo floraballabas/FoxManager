@@ -17,5 +17,17 @@ namespace FoxManager.Entities
         public DbSet<Student> Students { get; set; }
         public DbSet<Team> Teams { get; set; }
         public DbSet<Division> Divisions { get; set; }
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Student>()
+                .HasMany(p => p.Projects)
+                .WithOne(u => u.Student).IsRequired();
+
+            modelBuilder.Entity<Project>()
+                .HasOne(u => u.Student)
+                .WithMany(p => p.Projects).IsRequired();
+        }
     }
 }

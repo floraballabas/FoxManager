@@ -19,11 +19,11 @@ namespace FoxManager.Controllers
         }
 
         [HttpPost]
-        public IActionResult LoginHandler(Student userFromForm)
+        public IActionResult LoginHandler(Student studentFromForm)
         {
-            if (UserService.AuthenticateUser(userFromForm.StudentName))
+            if (UserService.AuthenticateUser(studentFromForm.StudentName))
             {
-                return LocalRedirect("/user/" + userFromForm.StudentName);
+                return LocalRedirect("/user/" + studentFromForm.StudentName);
             }
 
             return LocalRedirect("/");
@@ -34,6 +34,7 @@ namespace FoxManager.Controllers
         public IActionResult Profile(string userName)
         {
             var user = UserService.GetUserInfo(userName);
+            var projects = UserService.GetUserProjects(userName);
             return View(user);
         }
     }

@@ -25,5 +25,10 @@ namespace FoxManager.Services
         {
             return UserRepository.GetUserInfo(name);
         }
+
+        public List<Project> GetUserProjects(string name)
+        {
+            return UserRepository.GetUserProjectList(name);
+        }
     }
 }

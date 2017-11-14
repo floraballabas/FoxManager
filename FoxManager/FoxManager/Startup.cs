@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.IO;
 using FoxManager.Repositories;
+using FoxManager.Services;
 
 namespace FoxManager
 {
@@ -29,6 +30,7 @@ namespace FoxManager
 
             services.AddMvc();
             services.AddScoped<UserRepository>();
+            services.AddScoped<UserService>();
             services.AddDbContext<FoxManagerContext>(options => options.UseNpgsql(Configuration["ConnectionStrings:FoxManagerConnection"]));
         }
 
